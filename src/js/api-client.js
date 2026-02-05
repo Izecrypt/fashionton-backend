@@ -24,8 +24,8 @@ class FashionAPI {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
       return 'http://localhost:3000/api';
     }
-    // Production - use relative path or configured domain
-    return '/api';
+    // Production - Render backend
+    return 'https://fashionton-backend.onrender.com/api';
   }
 
   /**
