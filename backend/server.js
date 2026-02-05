@@ -3,27 +3,27 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || '0.0.0.0';
 
-console.log('Starting server...');
-console.log('PORT:', PORT);
-console.log('HOST:', HOST);
-
-// CORS
+// Basic middleware
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
+// Log all requests
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
 // Health check
 app.get('/', (req, res) => {
-  console.log('Health check received');
-  res.json({ success: true, message: 'FashionTON API' });
+  res.json({ status: 'ok', time: Date.now() });
 });
 
 app.get('/health', (req, res) => {
-  res.json({ success: true, status: 'healthy' });
+  res.json({ status: 'healthy' });
 });
 
-// Leaderboard
+// API routes
 app.get('/api/leaderboard/global', (req, res) => {
   res.json({
     success: true,
@@ -35,7 +35,6 @@ app.get('/api/leaderboard/global', (req, res) => {
   });
 });
 
-// Current challenge
 app.get('/api/challenges/current', (req, res) => {
   res.json({
     success: true,
@@ -49,21 +48,17 @@ app.get('/api/challenges/current', (req, res) => {
   });
 });
 
-// Wardrobe
 app.get('/api/wardrobe', (req, res) => {
   res.json({ success: true, data: [] });
 });
 
-// Start server with explicit host binding
-const server = app.listen(PORT, HOST, () => {
-  console.log(`Server running on http://${HOST}:${PORT}`);
+// Error handler
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
-// Handle graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully');
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
+// Start server - bind to all interfaces
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server listening on port ${PORT}`);
 });
