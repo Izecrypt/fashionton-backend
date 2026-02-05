@@ -1,15 +1,13 @@
 services:
   - type: web
     name: fashionton-backend
-    runtime: node
+    env: node
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: node server.js
     envVars:
-      - key: UPSTASH_REDIS_REST_URL
-        value: https://ultimate-ape-39168.upstash.io
-      - key: UPSTASH_REDIS_REST_TOKEN
-        value: AZkAAAIncDIxZjNkMTFjMTYyYzQ0ZWY4YTgxNDgwNjMwMTc5ZDVmMHAyMzkxNjg
-      - key: TELEGRAM_BOT_TOKEN
-        value: 8045165561:AAGOknrIrvhNo5eG8SGX06bbY49aMN0Xfq4
       - key: NODE_ENV
         value: production
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
