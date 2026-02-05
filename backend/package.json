@@ -2,9 +2,9 @@
   "name": "fashionton-backend",
   "version": "1.0.0",
   "description": "FashionTON Wardrobe Backend API",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "dev": "node --watch index.js"
   },
   "keywords": ["fashionton", "telegram", "mini-app", "ton"],

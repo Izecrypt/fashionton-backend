@@ -25,8 +25,7 @@ class FashionAPI {
       return 'http://localhost:3000/api';
     }
     // Production - Railway backend
-    // TODO: Update this with your actual Railway URL after deployment
-    return 'https://fashionton-backend.up.railway.app/api';
+    return 'https://fashionton-backend-production.up.railway.app/api';
   }
 
   /**

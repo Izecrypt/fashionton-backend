@@ -46,7 +46,7 @@ const wardrobeScreen = {
     // Category filter
     document.querySelectorAll('.category-filter').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const category = e.target.dataset.category;
+        const category = e.currentTarget.dataset.category || 'all';
         this.setCategory(category);
       });
     });
