@@ -172,7 +172,7 @@ class OutfitsScreen {
    */
   async _loadWardrobeItems() {
     try {
-      const response = await window.api.getWardrobe({ limit: 100 });
+      const response = await window.api.getWardrobe(null, 100, 0);
       this.wardrobeItems = response.data || [];
       this._renderWardrobeItems();
     } catch (error) {
