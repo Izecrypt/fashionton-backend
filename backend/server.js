@@ -10,6 +10,7 @@ app.use(express.json());
 
 // Health check - MUST respond for Railway health checks
 app.get('/', (req, res) => {
+  console.log('Health check received');
   res.json({ success: true, message: 'FashionTON API' });
 });
 
@@ -48,7 +49,17 @@ app.get('/api/wardrobe', (req, res) => {
   res.json({ success: true, data: [] });
 });
 
-// Start server - let Express handle the host binding
-app.listen(PORT, () => {
+// Start server
+const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+});
+
+// Handle graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
 });
