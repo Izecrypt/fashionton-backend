@@ -48,7 +48,7 @@ app.get('/api/wardrobe', (req, res) => {
   res.json({ success: true, data: [] });
 });
 
-// Bind to 0.0.0.0 for Railway
-app.listen(PORT, '0.0.0.0', () => {
+// Start server - let Express handle the host binding
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
