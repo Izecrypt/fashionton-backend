@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const { Redis } = require('@upstash/redis');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,8 +8,14 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// Health
-app.get('/', (req, res) => res.json({ success: true, message: 'FashionTON API' }));
+// Health check - MUST respond for Railway health checks
+app.get('/', (req, res) => {
+  res.json({ success: true, message: 'FashionTON API' });
+});
+
+app.get('/health', (req, res) => {
+  res.json({ success: true, status: 'healthy' });
+});
 
 // Leaderboard
 app.get('/api/leaderboard/global', (req, res) => {
@@ -38,9 +43,12 @@ app.get('/api/challenges/current', (req, res) => {
   });
 });
 
-// Wardrobe (mock)
+// Wardrobe
 app.get('/api/wardrobe', (req, res) => {
   res.json({ success: true, data: [] });
 });
 
-app.listen(PORT, () => console.log(`Server on port ${PORT}`));
+// Bind to 0.0.0.0 for Railway
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
