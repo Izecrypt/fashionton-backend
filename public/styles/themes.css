@@ -1,0 +1,382 @@
+/**
+ * FashionTON Wardrobe - Theme System
+ * File: src/styles/themes.css
+ * 
+ * Multi-theme support including Default (Chic), Dark Mode, and Minimal.
+ * Theme switching via data-theme attribute on document element.
+ */
+
+/* ========================================
+   THEME: CHIC (Default)
+   ======================================== */
+
+:root,
+[data-theme="chic"] {
+  /* Primary Colors */
+  --theme-primary: var(--color-fashion-pink);
+  --theme-primary-light: var(--color-fashion-pink-light);
+  --theme-primary-dark: var(--color-fashion-pink-dark);
+  --theme-primary-rgb: var(--color-fashion-pink-rgb);
+  
+  /* Secondary Colors */
+  --theme-secondary: var(--color-ton-blue);
+  --theme-secondary-light: var(--color-ton-blue-light);
+  --theme-secondary-dark: var(--color-ton-blue-dark);
+  --theme-secondary-rgb: var(--color-ton-blue-rgb);
+  
+  /* Accent Colors */
+  --theme-accent: var(--color-gold);
+  --theme-accent-light: var(--color-gold-light);
+  --theme-accent-dark: var(--color-gold-dark);
+  --theme-accent-rgb: var(--color-gold-rgb);
+  
+  /* Background Colors */
+  --theme-bg-primary: linear-gradient(135deg, #FFF5F7 0%, #F0F8FF 100%);
+  --theme-bg-secondary: #FFFFFF;
+  --theme-bg-tertiary: #FFF9FB;
+  --theme-bg-elevated: #FFFFFF;
+  
+  /* Text Colors */
+  --theme-text-primary: var(--color-black);
+  --theme-text-secondary: var(--color-gray-dark);
+  --theme-text-tertiary: var(--color-gray);
+  --theme-text-inverse: #FFFFFF;
+  
+  /* Surface Colors */
+  --theme-surface: #FFFFFF;
+  --theme-surface-hover: #FAFAFA;
+  --theme-surface-active: #F5F5F5;
+  
+  /* Glass Colors */
+  --theme-glass-bg: rgba(255, 255, 255, 0.92);
+  --theme-glass-bg-hover: rgba(255, 255, 255, 0.98);
+  --theme-glass-bg-active: rgba(255, 255, 255, 0.88);
+  --theme-glass-border: rgba(255, 107, 157, 0.15);
+  --theme-glass-border-strong: rgba(255, 107, 157, 0.3);
+  
+  /* Shadows */
+  --theme-shadow-color: 0, 0, 0;
+  --theme-shadow-xs: 0 1px 2px rgba(var(--theme-shadow-color), 0.05);
+  --theme-shadow-sm: 0 2px 4px rgba(var(--theme-shadow-color), 0.06);
+  --theme-shadow-md: 0 4px 12px rgba(var(--theme-shadow-color), 0.08);
+  --theme-shadow-lg: 0 8px 24px rgba(var(--theme-shadow-color), 0.08);
+  --theme-shadow-xl: 0 12px 40px rgba(var(--theme-shadow-color), 0.12);
+  --theme-shadow-glow: 0 0 40px rgba(var(--theme-primary-rgb), 0.15);
+  
+  /* Gradients */
+  --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary), var(--theme-primary-light));
+  --theme-gradient-secondary: linear-gradient(135deg, var(--theme-secondary), var(--theme-secondary-light));
+  --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent), var(--theme-accent-light));
+  --theme-gradient-hero: linear-gradient(135deg, #FF6B9D 0%, #0088CC 100%);
+  
+  /* Component Specific */
+  --theme-card-bg: rgba(255, 255, 255, 0.92);
+  --theme-card-border: rgba(255, 107, 157, 0.2);
+  --theme-input-bg: #FFFFFF;
+  --theme-input-border: rgba(255, 107, 157, 0.2);
+  --theme-button-primary-bg: var(--theme-gradient-primary);
+  --theme-button-primary-shadow: 0 4px 12px rgba(var(--theme-primary-rgb), 0.3);
+}
+
+/* ========================================
+   THEME: DARK MODE
+   ======================================== */
+
+[data-theme="dark"] {
+  /* Primary Colors - Adjusted for dark mode */
+  --theme-primary: #FF85AD;
+  --theme-primary-light: #FF9FC0;
+  --theme-primary-dark: #E55A87;
+  --theme-primary-rgb: 255, 133, 173;
+  
+  /* Secondary Colors - Adjusted for dark mode */
+  --theme-secondary: #0099E6;
+  --theme-secondary-light: #33B3F0;
+  --theme-secondary-dark: #0077B3;
+  --theme-secondary-rgb: 0, 153, 230;
+  
+  /* Accent Colors - Adjusted for dark mode */
+  --theme-accent: #FFE14D;
+  --theme-accent-light: #FFEA80;
+  --theme-accent-dark: #E6C200;
+  --theme-accent-rgb: 255, 225, 77;
+  
+  /* Background Colors */
+  --theme-bg-primary: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #1A1A2E 100%);
+  --theme-bg-secondary: #252542;
+  --theme-bg-tertiary: #2A2A4A;
+  --theme-bg-elevated: #303055;
+  
+  /* Text Colors */
+  --theme-text-primary: #FAFAFA;
+  --theme-text-secondary: #B8B8C8;
+  --theme-text-tertiary: #8E8E9E;
+  --theme-text-inverse: #1A1A1A;
+  
+  /* Surface Colors */
+  --theme-surface: #252542;
+  --theme-surface-hover: #2A2A4A;
+  --theme-surface-active: #303055;
+  
+  /* Glass Colors */
+  --theme-glass-bg: rgba(30, 30, 50, 0.85);
+  --theme-glass-bg-hover: rgba(40, 40, 65, 0.92);
+  --theme-glass-bg-active: rgba(25, 25, 45, 0.8);
+  --theme-glass-border: rgba(255, 133, 173, 0.2);
+  --theme-glass-border-strong: rgba(255, 133, 173, 0.35);
+  
+  /* Shadows */
+  --theme-shadow-color: 0, 0, 0;
+  --theme-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --theme-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --theme-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --theme-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --theme-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.6);
+  --theme-shadow-glow: 0 0 40px rgba(var(--theme-primary-rgb), 0.2);
+  
+  /* Gradients */
+  --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary), var(--theme-primary-light));
+  --theme-gradient-secondary: linear-gradient(135deg, var(--theme-secondary), var(--theme-secondary-light));
+  --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent), var(--theme-accent-light));
+  --theme-gradient-hero: linear-gradient(135deg, #FF85AD 0%, #0099E6 100%);
+  
+  /* Component Specific */
+  --theme-card-bg: rgba(40, 40, 65, 0.85);
+  --theme-card-border: rgba(255, 133, 173, 0.2);
+  --theme-input-bg: rgba(30, 30, 50, 0.8);
+  --theme-input-border: rgba(255, 255, 255, 0.15);
+  --theme-button-primary-bg: var(--theme-gradient-primary);
+  --theme-button-primary-shadow: 0 4px 16px rgba(var(--theme-primary-rgb), 0.4);
+}
+
+/* ========================================
+   THEME: MINIMAL
+   ======================================== */
+
+[data-theme="minimal"] {
+  /* Primary Colors - Muted */
+  --theme-primary: #E85D8E;
+  --theme-primary-light: #ED7AA3;
+  --theme-primary-dark: #D14A7A;
+  --theme-primary-rgb: 232, 93, 142;
+  
+  /* Secondary Colors - Muted */
+  --theme-secondary: #2B7A99;
+  --theme-secondary-light: #4A9BB8;
+  --theme-secondary-dark: #1F5A70;
+  --theme-secondary-rgb: 43, 122, 153;
+  
+  /* Accent Colors - Muted */
+  --theme-accent: #D4AF37;
+  --theme-accent-light: #E0C158;
+  --theme-accent-dark: #B8962E;
+  --theme-accent-rgb: 212, 175, 55;
+  
+  /* Background Colors - Neutral */
+  --theme-bg-primary: #FAFAFA;
+  --theme-bg-secondary: #FFFFFF;
+  --theme-bg-tertiary: #F5F5F5;
+  --theme-bg-elevated: #FFFFFF;
+  
+  /* Text Colors */
+  --theme-text-primary: #2D2D2D;
+  --theme-text-secondary: #666666;
+  --theme-text-tertiary: #999999;
+  --theme-text-inverse: #FFFFFF;
+  
+  /* Surface Colors */
+  --theme-surface: #FFFFFF;
+  --theme-surface-hover: #F8F8F8;
+  --theme-surface-active: #F0F0F0;
+  
+  /* Glass Colors - Reduced transparency */
+  --theme-glass-bg: rgba(255, 255, 255, 0.98);
+  --theme-glass-bg-hover: #FFFFFF;
+  --theme-glass-bg-active: #FAFAFA;
+  --theme-glass-border: rgba(0, 0, 0, 0.08);
+  --theme-glass-border-strong: rgba(0, 0, 0, 0.15);
+  
+  /* Shadows - Minimal and soft */
+  --theme-shadow-color: 0, 0, 0;
+  --theme-shadow-xs: 0 1px 2px rgba(var(--theme-shadow-color), 0.04);
+  --theme-shadow-sm: 0 1px 3px rgba(var(--theme-shadow-color), 0.06);
+  --theme-shadow-md: 0 2px 6px rgba(var(--theme-shadow-color), 0.06);
+  --theme-shadow-lg: 0 4px 12px rgba(var(--theme-shadow-color), 0.06);
+  --theme-shadow-xl: 0 8px 24px rgba(var(--theme-shadow-color), 0.08);
+  --theme-shadow-glow: none;
+  
+  /* Gradients - Subtle */
+  --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary), var(--theme-primary-light));
+  --theme-gradient-secondary: linear-gradient(135deg, var(--theme-secondary), var(--theme-secondary-light));
+  --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent), var(--theme-accent-light));
+  --theme-gradient-hero: linear-gradient(135deg, #E85D8E 0%, #2B7A99 100%);
+  
+  /* Component Specific */
+  --theme-card-bg: #FFFFFF;
+  --theme-card-border: rgba(0, 0, 0, 0.08);
+  --theme-input-bg: #FFFFFF;
+  --theme-input-border: rgba(0, 0, 0, 0.12);
+  --theme-button-primary-bg: var(--theme-primary);
+  --theme-button-primary-shadow: none;
+}
+
+/* ========================================
+   THEME APPLICATION HELPERS
+   ======================================== */
+
+/* Apply theme background */
+.theme-bg {
+  background: var(--theme-bg-primary);
+}
+
+/* Apply theme text colors */
+.theme-text-primary { color: var(--theme-text-primary); }
+.theme-text-secondary { color: var(--theme-text-secondary); }
+.theme-text-tertiary { color: var(--theme-text-tertiary); }
+
+/* Apply theme glass effect */
+.theme-glass {
+  background: var(--theme-glass-bg);
+  border: 1px solid var(--theme-glass-border);
+}
+
+.theme-glass:hover {
+  background: var(--theme-glass-bg-hover);
+}
+
+.theme-glass:active {
+  background: var(--theme-glass-bg-active);
+}
+
+/* ========================================
+   AUTOMATIC DARK MODE (System Preference)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]):not([data-theme="chic"]):not([data-theme="minimal"]) {
+    /* Inherit dark theme variables */
+    --theme-primary: #FF85AD;
+    --theme-primary-light: #FF9FC0;
+    --theme-primary-dark: #E55A87;
+    --theme-primary-rgb: 255, 133, 173;
+    
+    --theme-secondary: #0099E6;
+    --theme-secondary-light: #33B3F0;
+    --theme-secondary-dark: #0077B3;
+    --theme-secondary-rgb: 0, 153, 230;
+    
+    --theme-accent: #FFE14D;
+    --theme-accent-light: #FFEA80;
+    --theme-accent-dark: #E6C200;
+    --theme-accent-rgb: 255, 225, 77;
+    
+    --theme-bg-primary: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #1A1A2E 100%);
+    --theme-bg-secondary: #252542;
+    --theme-bg-tertiary: #2A2A4A;
+    --theme-bg-elevated: #303055;
+    
+    --theme-text-primary: #FAFAFA;
+    --theme-text-secondary: #B8B8C8;
+    --theme-text-tertiary: #8E8E9E;
+    --theme-text-inverse: #1A1A1A;
+    
+    --theme-surface: #252542;
+    --theme-surface-hover: #2A2A4A;
+    --theme-surface-active: #303055;
+    
+    --theme-glass-bg: rgba(30, 30, 50, 0.85);
+    --theme-glass-bg-hover: rgba(40, 40, 65, 0.92);
+    --theme-glass-bg-active: rgba(25, 25, 45, 0.8);
+    --theme-glass-border: rgba(255, 133, 173, 0.2);
+    --theme-glass-border-strong: rgba(255, 133, 173, 0.35);
+    
+    --theme-shadow-color: 0, 0, 0;
+    --theme-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --theme-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --theme-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --theme-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --theme-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.6);
+    --theme-shadow-glow: 0 0 40px rgba(var(--theme-primary-rgb), 0.2);
+    
+    --theme-card-bg: rgba(40, 40, 65, 0.85);
+    --theme-card-border: rgba(255, 133, 173, 0.2);
+    --theme-input-bg: rgba(30, 30, 50, 0.8);
+    --theme-input-border: rgba(255, 255, 255, 0.15);
+  }
+  
+  :root:not([data-theme]):not([data-theme="chic"]):not([data-theme="minimal"]) body {
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+    color: #FAFAFA;
+  }
+}
+
+/* ========================================
+   TELEGRAM WEBAPP THEME INTEGRATION
+   ======================================== */
+
+/* Telegram's color scheme classes */
+.telegram-webapp .tg-color-scheme-dark {
+  --theme-primary: #FF85AD;
+  --theme-primary-rgb: 255, 133, 173;
+  --theme-bg-primary: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+  --theme-text-primary: #FAFAFA;
+  --theme-glass-bg: rgba(30, 30, 50, 0.85);
+}
+
+.telegram-webapp .tg-color-scheme-light {
+  --theme-primary: var(--color-fashion-pink);
+  --theme-primary-rgb: var(--color-fashion-pink-rgb);
+  --theme-bg-primary: linear-gradient(135deg, #FFF5F7 0%, #F0F8FF 100%);
+  --theme-text-primary: var(--color-black);
+  --theme-glass-bg: rgba(255, 255, 255, 0.92);
+}
+
+/* ========================================
+   THEME TRANSITIONS
+   ======================================== */
+
+/* Smooth theme switching for supported properties */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: 
+    background-color var(--duration-slow) var(--ease-out),
+    background-image var(--duration-slow) var(--ease-out),
+    border-color var(--duration-slow) var(--ease-out),
+    color var(--duration-slow) var(--ease-out),
+    box-shadow var(--duration-slow) var(--ease-out) !important;
+}
+
+/* ========================================
+   HIGH CONTRAST THEME OVERRIDES
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  [data-theme],
+  :root {
+    --theme-glass-bg: rgba(255, 255, 255, 1);
+    --theme-glass-border: rgba(0, 0, 0, 0.5);
+    --theme-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --theme-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+  
+  [data-theme="dark"] {
+    --theme-glass-bg: rgba(20, 20, 35, 1);
+    --theme-glass-border: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  [data-theme],
+  :root {
+    --theme-bg-primary: #FFFFFF;
+    --theme-text-primary: #000000;
+    --theme-glass-bg: #FFFFFF;
+    --theme-shadow-none: none;
+  }
+}

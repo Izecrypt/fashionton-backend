@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - FashionTON Wardrobe</title>
+    <style>
+        :root {
+            --primary-pink: #FF6B9D;
+            --primary-blue: #4ECDC4;
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text-light: #f8f9fa;
+            --text-muted: #a0a0a0;
+            --border-color: #2d3561;
+            --gradient-start: #FF6B9D;
+            --gradient-end: #4ECDC4;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '👗';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            right: -1rem;
+            top: -1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .last-updated {
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--primary-pink);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(78,205,196,0.1));
+            border-left: 4px solid var(--primary-pink);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: 0.75rem;
+        }
+
+        .danger-box {
+            background: rgba(220,53,69,0.1);
+            border: 1px solid rgba(220,53,69,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box h4 {
+            color: var(--danger);
+            margin-bottom: 0.75rem;
+        }
+
+        .numbered-section {
+            counter-reset: section;
+        }
+
+        .numbered-section h2::before {
+            counter-increment: section;
+            content: counter(section) ". ";
+            color: var(--primary-blue);
+        }
+
+        .definition-list {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .definition-list dt {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .definition-list dt:first-child {
+            margin-top: 0;
+        }
+
+        .definition-list dd {
+            margin-left: 0;
+            margin-top: 0.25rem;
+            color: var(--text-muted);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+
+        .check-list li::before {
+            content: '✅ ';
+        }
+
+        .check-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .cross-list li::before {
+            content: '❌ ';
+        }
+
+        .cross-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>👗 Terms of Service</h1>
+        <p>FashionTON Wardrobe - Rules of Engagement</p>
+    </header>
+
+    <div class="last-updated">
+        📅 Last Updated: February 4, 2026 | Effective Date: February 4, 2026
+    </div>
+
+    <div class="container">
+        <section>
+            <h2><span class="icon">📋</span> Acceptance of Terms</h2>
+            <p>Welcome to FashionTON Wardrobe! By accessing or using our Telegram Mini App ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access the App.</p>
+            
+            <div class="highlight-box">
+                <strong>⚠️ Important:</strong> These Terms constitute a legally binding agreement between you and FashionTON Wardrobe. Please read them carefully. By using the App, you acknowledge that you have read, understood, and agree to be bound by these Terms.
+            </div>
+
+            <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the App after changes constitutes acceptance of the revised Terms.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">👤</span> Eligibility</h2>
+            <p>To use FashionTON Wardrobe, you must:</p>
+            <ul class="check-list">
+                <li>Be at least 13 years of age</li>
+                <li>Have a valid Telegram account</li>
+                <li>Comply with Telegram's Terms of Service</li>
+                <li>Not be prohibited from receiving our services under applicable laws</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Age Requirement</h4>
+                <p>If you are between 13 and 16 years old, you confirm that you have obtained parental or guardian consent to use this App. If you are under 13, you may not use FashionTON Wardrobe.</p>
+            </div>
+
+            <h3>Account Responsibility</h3>
+            <p>You are responsible for:</p>
+            <ul>
+                <li>Maintaining the confidentiality of your Telegram account</li>
+                <li>All activities that occur under your account</li>
+                <li>Notifying us immediately of any unauthorized use</li>
+                <li>Ensuring your account information is accurate and up-to-date</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">📸</span> Content License</h2>
+            <p>When you upload photos or other content to FashionTON Wardrobe ("User Content"), you retain ownership of your content. However, you grant us certain licenses to provide our services:</p>
+
+            <h3>License You Grant Us</h3>
+            <p>By uploading User Content, you grant FashionTON Wardrobe a worldwide, non-exclusive, royalty-free license to:</p>
+            <ul>
+                <li><strong>Host and Display:</strong> Store and show your photos within the App</li>
+                <li><strong>Process and Optimize:</strong> Resize, compress, and format images for better performance</li>
+                <li><strong>Create Derivatives:</strong> Generate thumbnails and outfit combinations you create</li>
+                <li><strong>Distribute:</strong> Display your public content to other users (based on your privacy settings)</li>
+            </ul>
+
+            <p>This license is limited to what is necessary to operate and improve our services. We will never sell your photos or use them for advertising without your explicit permission.</p>
+
+            <h3>Your Representations</h3>
+            <p>You represent and warrant that:</p>
+            <ul>
+                <li>You own or have the necessary rights to all content you upload</li>
+                <li>Your content does not infringe any third-party rights</li>
+                <li>Your content complies with our Content Rules (Section 5)</li>
+                <li>You have obtained consent from any identifiable persons in your photos</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">🚫</span> Prohibited Uses</h2>
+            <p>You agree not to use FashionTON Wardrobe to:</p>
+
+            <div class="danger-box">
+                <h4>🚫 Strictly Prohibited</h4>
+                <ul class="cross-list">
+                    <li>Upload nude, sexually explicit, or pornographic content</li>
+                    <li>Post hate speech, harassment, or discriminatory content</li>
+                    <li>Share violent, graphic, or disturbing imagery</li>
+                    <li>Infringe copyrights, trademarks, or other intellectual property</li>
+                    <li>Upload content depicting illegal activities</li>
+                    <li>Create fake accounts or impersonate others</li>
+                    <li>Attempt to hack, disrupt, or damage the App</li>
+                    <li>Scrape, crawl, or data-mine the App</li>
+                    <li>Send spam or unsolicited messages</li>
+                    <li>Use the App for any illegal purpose</li>
+                </ul>
+            </div>
+
+            <h3>Content Rules for Photos</h3>
+            <p>All uploaded photos must:</p>
+            <ul class="check-list">
+                <li>Feature clothing, fashion items, or outfits</li>
+                <li>Be appropriate for a general audience (13+)</li>
+                <li>Not contain nudity or sexual content</li>
+                <li>Not feature minors inappropriately</li>
+                <li>Not include private information of others</li>
+            </ul>
+
+            <p>We reserve the right to remove any content that violates these rules and to terminate accounts of repeat offenders.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">💎</span> TON Payments</h2>
+            <p>FashionTON Wardrobe uses TON (The Open Network) cryptocurrency for certain features. By making payments, you agree to the following terms:</p>
+
+            <h3>Payment Terms</h3>
+            <ul>
+                <li><strong>All Sales Final:</strong> Except for technical errors, all payments are final and non-refundable</li>
+                <li><strong>Network Fees:</strong> Blockchain transaction fees apply to all TON transfers and are your responsibility</li>
+                <li><strong>Price Volatility:</strong> You acknowledge that TON value may fluctuate</li>
+                <li><strong>Wallet Responsibility:</strong> You are solely responsible for your TON wallet security</li>
+                <li><strong>No Financial Services:</strong> We do not provide banking, exchange, or investment services</li>
+            </ul>
+
+            <h3>Premium Subscriptions</h3>
+            <p>If you purchase a Premium subscription:</p>
+            <ul>
+                <li>Billing occurs monthly in TON at the current exchange rate</li>
+                <li>Subscriptions auto-renew unless cancelled</li>
+                <li>You can cancel anytime; access continues until the period ends</li>
+                <li>No partial refunds for unused time</li>
+                <li>Exchange rate is locked at the time of each billing</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Important Payment Information</h4>
+                <p>Cryptocurrency transactions are irreversible. Double-check all payment details before confirming. We cannot reverse TON transactions once confirmed on the blockchain. For technical payment issues, contact support within 7 days.</p>
+            </div>
+
+            <h3>Taxes</h3>
+            <p>You are responsible for any taxes related to your use of the App, including any gains or losses from cryptocurrency transactions. We do not withhold taxes and provide transaction history for your accounting purposes.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">🏆</span> Challenges and Rewards</h2>
+            <p>Participation in style challenges is subject to:</p>
+            <ul>
+                <li>Fair play and honest participation</li>
+                <li>No vote manipulation or artificial engagement</li>
+                <li>No plagiarism of others' outfits</li>
+                <li>Community voting determines winners</li>
+                <li>Prize distribution within 7 days of challenge end</li>
+                <li>We reserve the right to disqualify cheaters</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">🔚</span> Termination</h2>
+            
+            <h3>Termination by You</h3>
+            <p>You may stop using FashionTON Wardrobe at any time. To delete your account and data:</p>
+            <ol>
+                <li>Go to Settings → Privacy → Delete Account</li>
+                <li>Confirm deletion</li>
+                <li>Your data will be permanently removed within 30 days</li>
+            </ol>
+
+            <h3>Termination by Us</h3>
+            <p>We may suspend or terminate your account if you:</p>
+            <ul class="cross-list">
+                <li>Violate these Terms</li>
+                <li>Upload prohibited content</li>
+                <li>Engage in fraudulent activity</li>
+                <li>Create security risks</li>
+                <li>Violate others' rights</li>
+            </ul>
+
+            <h3>Effect of Termination</h3>
+            <p>Upon termination:</p>
+            <ul>
+                <li>Your right to use the App ceases immediately</li>
+                <li>Your public content may be removed</li>
+                <li>Pending payments/transactions may be completed or refunded</li>
+                <li>Sections that by their nature should survive termination will survive</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">⚠️</span> Disclaimers</h2>
+            
+            <p><strong>AS IS:</strong> FashionTON Wardrobe is provided "as is" and "as available" without warranties of any kind, either express or implied.</p>
+
+            <p>We do not warrant that:</p>
+            <ul>
+                <li>The App will be uninterrupted or error-free</li>
+                <li>Defects will be corrected</li>
+                <li>The App is free of viruses or harmful components</li>
+                <li>The App will meet your specific requirements</li>
+            </ul>
+
+            <h3>Size Calculator Disclaimer</h3>
+            <p>Our AI size calculator provides estimates only. Always refer to brand-specific size charts and consider personal fit preferences. We are not responsible for sizing mismatches.</p>
+
+            <h3>Cryptocurrency Disclaimer</h3>
+            <p>Cryptocurrency involves risk. We are not responsible for:</p>
+            <ul>
+                <li>Wallet security breaches</li>
+                <li>Lost private keys</li>
+                <li>TON network issues</li>
+                <li>Price volatility losses</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">🛡️</span> Limitation of Liability</h2>
+            <p>To the maximum extent permitted by law, FashionTON Wardrobe and its team shall not be liable for:</p>
+            <ul>
+                <li>Indirect, incidental, special, or consequential damages</li>
+                <li>Loss of profits, data, or goodwill</li>
+                <li>Service interruptions or data loss</li>
+                <li>Unauthorized access to your data</li>
+                <li>Third-party content or conduct</li>
+            </ul>
+
+            <p>Our total liability for any claim arising from these Terms shall not exceed the amount you paid us in the 12 months preceding the claim, or $100 USD, whichever is greater.</p>
+
+            <p>Some jurisdictions do not allow certain limitations, so these may not apply to you.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📚</span> Governing Law</h2>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the European Union and Estonia (where our team is based), without regard to conflict of law principles.</p>
+
+            <p>Any disputes arising from these Terms shall first be attempted to be resolved through good-faith negotiation. If unresolved, disputes shall be submitted to binding arbitration in Tallinn, Estonia, under the rules of the Estonian Arbitration Court.</p>
+
+            <h3>EU Consumer Rights</h3>
+            <p>If you are an EU consumer, you retain any mandatory consumer protection rights under your local law that cannot be waived by these Terms.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📜</span> General Provisions</h2>
+            
+            <h3>Entire Agreement</h3>
+            <p>These Terms, together with our Privacy Policy and Content License, constitute the entire agreement between you and FashionTON Wardrobe.</p>
+
+            <h3>Severability</h3>
+            <p>If any provision of these Terms is found invalid or unenforceable, the remaining provisions will continue in full force.</p>
+
+            <h3>No Waiver</h3>
+            <p>Our failure to enforce any right or provision does not constitute a waiver of such right or provision.</p>
+
+            <h3>Assignment</h3>
+            <p>You may not assign these Terms without our consent. We may assign these Terms in connection with a merger, acquisition, or sale of assets.</p>
+
+            <h3>Force Majeure</h3>
+            <p>We are not liable for failures due to causes beyond our reasonable control, including acts of God, war, terrorism, riots, embargoes, acts of civil or military authorities, fire, floods, accidents, strikes, or shortages of transportation, facilities, fuel, energy, labor, or materials.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📞</span> Contact Information</h2>
+            <p>For questions about these Terms, please contact us:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:legal@fashionton.app" style="color: var(--primary-pink);">legal@fashionton.app</a></li>
+                <li><strong>Telegram:</strong> @FashionTONSupport</li>
+                <li><strong>Address:</strong> FashionTON Wardrobe Team, Estonia</li>
+            </ul>
+        </section>
+
+        <div class="contact-box">
+            <h3>Thank You for Using FashionTON Wardrobe!</h3>
+            <p>By using our App, you're joining a community of fashion enthusiasts.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                Stay stylish, stay secure! 👗💎
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 FashionTON Wardrobe. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Made with 💖 for fashion lovers worldwide</p>
+    </footer>
+</body>
+</html>

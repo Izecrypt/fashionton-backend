@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content License Agreement - FashionTON Wardrobe</title>
+    <style>
+        :root {
+            --primary-pink: #FF6B9D;
+            --primary-blue: #4ECDC4;
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text-light: #f8f9fa;
+            --text-muted: #a0a0a0;
+            --border-color: #2d3561;
+            --gradient-start: #FF6B9D;
+            --gradient-end: #4ECDC4;
+            --warning: #ffc107;
+            --success: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '📸';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            right: -1rem;
+            top: -1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .last-updated {
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--primary-pink);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(78,205,196,0.1));
+            border-left: 4px solid var(--primary-pink);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .success-box {
+            background: rgba(40,167,69,0.1);
+            border: 1px solid rgba(40,167,69,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .success-box h4 {
+            color: var(--success);
+            margin-bottom: 0.75rem;
+        }
+
+        .warning-box {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: 0.75rem;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .rule-card {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .rule-card.allowed {
+            border-left: 4px solid var(--success);
+        }
+
+        .rule-card.prohibited {
+            border-left: 4px solid #dc3545;
+        }
+
+        .rule-card h4 {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .rule-card.allowed h4 {
+            color: var(--success);
+        }
+
+        .rule-card.prohibited h4 {
+            color: #dc3545;
+        }
+
+        .privacy-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .privacy-matrix th,
+        .privacy-matrix td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .privacy-matrix th {
+            background: rgba(255,107,157,0.1);
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
+
+        .privacy-matrix tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .privacy-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-private {
+            background: rgba(40,167,69,0.2);
+            color: #28a745;
+        }
+
+        .badge-public {
+            background: rgba(255,107,157,0.2);
+            color: var(--primary-pink);
+        }
+
+        .badge-challenge {
+            background: rgba(78,205,196,0.2);
+            color: var(--primary-blue);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+
+        .process-list {
+            counter-reset: process;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .process-list li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-list li::before {
+            counter-increment: process;
+            content: counter(process);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+
+            .privacy-matrix {
+                font-size: 0.85rem;
+            }
+
+            .privacy-matrix th,
+            .privacy-matrix td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📸 Content License Agreement</h1>
+        <p>FashionTON Wardrobe - Your Photos, Your Rights</p>
+    </header>
+
+    <div class="last-updated">
+        📅 Last Updated: February 4, 2026 | Effective Date: February 4, 2026
+    </div>
+
+    <div class="container">
+        <section>
+            <h2><span class="icon">👋</span> Introduction</h2>
+            <p>This Content License Agreement ("Agreement") governs how you upload, store, and share photos and other content ("User Content") on FashionTON Wardrobe. By uploading any content, you agree to these terms.</p>
+            
+            <div class="success-box">
+                <h4>✅ You Retain Ownership</h4>
+                <p>You always keep full ownership of your photos. We're just borrowing them to show them to you (and others you choose) in the app. You can delete them anytime!</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>🎯 In Simple Terms:</strong> You let us store and display your photos so you can use your wardrobe and join challenges. We don't own your photos, and we won't sell them or use them in ads without asking you first.
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">👤</span> Ownership</h2>
+            <p>You retain all ownership rights to the photos and content you upload to FashionTON Wardrobe. This means:</p>
+            <ul>
+                <li>You can download your photos anytime</li>
+                <li>You can delete your photos anytime</li>
+                <li>You can use your photos elsewhere</li>
+                <li>We claim no ownership over your content</li>
+            </ul>
+
+            <h3>What You Must Own</h3>
+            <p>You may only upload content that:</p>
+            <ul>
+                <li>You personally created or photographed</li>
+                <li>You have permission to share (e.g., photos taken by a friend with their consent)</li>
+                <li>Does not infringe on anyone else's rights</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">📜</span> License You Grant Us</h2>
+            <p>To provide our services, you grant FashionTON Wardrobe a limited license to use your content. This license is:</p>
+            <ul>
+                <li><strong>Non-exclusive:</strong> You can share your photos elsewhere too</li>
+                <li><strong>Royalty-free:</strong> We don't pay you for hosting your photos</li>
+                <li><strong>Worldwide:</strong> So users anywhere can see your public content</li>
+                <li><strong>Revocable:</strong> Delete your photos and the license ends</li>
+            </ul>
+
+            <h3>What We Can Do With Your Content</h3>
+            <table class="privacy-matrix">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Purpose</th>
+                        <th>Your Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Store</td>
+                        <td>Keep your photos available in your wardrobe</td>
+                        <td>Delete anytime</td>
+                    </tr>
+                    <tr>
+                        <td>Display</td>
+                        <td>Show in your wardrobe, outfits, challenges</td>
+                        <td>Privacy settings</td>
+                    </tr>
+                    <tr>
+                        <td>Resize/Optimize</td>
+                        <td>Create thumbnails, improve loading speed</td>
+                        <td>Automatic</td>
+                    </tr>
+                    <tr>
+                        <td>Combine</td>
+                        <td>Create outfit collages you design</td>
+                        <td>You choose</td>
+                    </tr>
+                    <tr>
+                        <td>Back up</td>
+                        <td>Protect against data loss</td>
+                        <td>Standard practice</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>What We Cannot Do</h3>
+            <div class="rules-grid">
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Sell Your Photos</h4>
+                    <p>We will never sell your photos to stock photo sites, advertisers, or third parties.</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Use in Ads (Without Permission)</h4>
+                    <p>We won't use your photos in marketing without asking you first and getting explicit consent.</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Train AI Models</h4>
+                    <p>Your photos won't be used to train machine learning models without your explicit opt-in.</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Share with Unrelated Third Parties</h4>
+                    <p>We don't give your photos to companies unrelated to providing our service.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">🔒</span> Privacy Settings</h2>
+            <p>You control who sees your content through privacy settings:</p>
+
+            <table class="privacy-matrix">
+                <thead>
+                    <tr>
+                        <th>Content Type</th>
+                        <th>Default Visibility</th>
+                        <th>Can Change?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wardrobe Items</td>
+                        <td><span class="privacy-badge badge-private">🔒 Private</span></td>
+                        <td>Yes - per item</td>
+                    </tr>
+                    <tr>
+                        <td>Outfits</td>
+                        <td><span class="privacy-badge badge-private">🔒 Private</span></td>
+                        <td>Yes - per outfit</td>
+                    </tr>
+                    <tr>
+                        <td>Challenge Entries</td>
+                        <td><span class="privacy-badge badge-challenge">👥 Challenge Only</span></td>
+                        <td>Yes - anonymous option</td>
+                    </tr>
+                    <tr>
+                        <td>Profile Photo</td>
+                        <td><span class="privacy-badge badge-public">🌐 Public</span></td>
+                        <td>Can remove</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>💡 Privacy Tip:</strong> Your wardrobe is private by default. Only content you explicitly share in challenges or set to public will be visible to other users.
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">📋</span> Content Rules</h2>
+            <p>To keep FashionTON Wardrobe safe and enjoyable for everyone, all uploaded content must follow these rules:</p>
+
+            <h3>✅ Allowed Content</h3>
+            <div class="rules-grid">
+                <div class="rule-card allowed">
+                    <h4><span class="icon">✅</span> Clothing & Fashion</h4>
+                    <p>Photos of your clothes, shoes, accessories, and outfits</p>
+                </div>
+                <div class="rule-card allowed">
+                    <h4><span class="icon">✅</span> Outfit Photos</h4>
+                    <p>Photos of yourself wearing outfits (appropriately dressed)</p>
+                </div>
+                <div class="rule-card allowed">
+                    <h4><span class="icon">✅</span> Style Inspiration</h4>
+                    <p>Fashion inspiration, mood boards, style references</p>
+                </div>
+                <div class="rule-card allowed">
+                    <h4><span class="icon">✅</span> Accessories</h4>
+                    <p>Bags, jewelry, watches, and other fashion accessories</p>
+                </div>
+            </div>
+
+            <h3>❌ Prohibited Content</h3>
+            <div class="rules-grid">
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Nudity & Sexual Content</h4>
+                    <p>No nude photos, sexual content, or sexually suggestive imagery</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Violence & Gore</h4>
+                    <p>No violent, graphic, or disturbing content</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Hate Speech</h4>
+                    <p>No content promoting hate, discrimination, or extremism</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Copyright Violations</h4>
+                    <p>No copyrighted material you don't have rights to share</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Private Information</h4>
+                    <p>No photos showing others' private info without consent</p>
+                </div>
+                <div class="rule-card prohibited">
+                    <h4><span class="icon">❌</span> Illegal Activities</h4>
+                    <p>No content depicting or promoting illegal acts</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Important Note on Minors</h4>
+                <p>If you are under 18, do not upload photos that could identify you personally (such as photos of your face alongside your real name). Be cautious about sharing personal information.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">🗑️</span> Content Removal</h2>
+            
+            <h3>Removing Your Own Content</h3>
+            <p>You can delete your content at any time:</p>
+            <ol class="process-list">
+                <li>Navigate to the item in your wardrobe or outfit</li>
+                <li>Tap the delete option</li>
+                <li>Confirm deletion</li>
+                <li>Content is removed immediately from the app</li>
+                <li>Backups are purged within 30 days</li>
+            </ol>
+
+            <h3>When We May Remove Content</h3>
+            <p>We may remove content without notice if:</p>
+            <ul>
+                <li>It violates these Content Rules</li>
+                <li>It violates our Terms of Service</li>
+                <li>We receive a valid copyright complaint</li>
+                <li>It poses a security or legal risk</li>
+                <li>It's reported by other users and confirmed to violate rules</li>
+            </ul>
+
+            <h3>Account Deletion</h3>
+            <p>When you delete your account:</p>
+            <ul>
+                <li>All your photos are permanently deleted within 30 days</li>
+                <li>Challenge entries are removed (or anonymized if they won)</li>
+                <li>Backups containing your photos are purged</li>
+                <li>We may retain anonymized analytics data</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">🚩</span> Reporting Content</h2>
+            <p>If you see content that violates these rules, please report it:</p>
+            
+            <h3>How to Report</h3>
+            <ol>
+                <li>Tap the three dots menu on the content</li>
+                <li>Select "Report"</li>
+                <li>Choose the reason (inappropriate, copyright, spam, other)</li>
+                <li>Add details if needed</li>
+                <li>Submit the report</li>
+            </ol>
+
+            <h3>What Happens Next</h3>
+            <ul>
+                <li>Reported content is reviewed within 24 hours</li>
+                <li>If confirmed to violate rules, it's removed</li>
+                <li>Repeat violators may have their accounts suspended</li>
+                <li>Severe violations result in immediate account termination</li>
+                <li>Illegal content is reported to authorities</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>🔒 Confidential:</strong> Reports are confidential. The reported user will not know who reported them.
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">⚖️</span> Copyright & DMCA</h2>
+            
+            <h3>Respecting Copyright</h3>
+            <p>FashionTON Wardrobe respects intellectual property rights. You may not upload content that infringes on others' copyrights, trademarks, or other rights.</p>
+
+            <h3>If Your Copyright is Violated</h3>
+            <p>If you believe your copyrighted work has been uploaded without permission:</p>
+            <ol>
+                <li>Contact us at <a href="mailto:copyright@fashionton.app" style="color: var(--primary-pink);">copyright@fashionton.app</a></li>
+                <li>Include:
+                    <ul>
+                        <li>Your contact information</li>
+                        <li>Description of the copyrighted work</li>
+                        <li>URL or location of the infringing content</li>
+                        <li>Statement that you have a good faith belief the use is unauthorized</li>
+                        <li>Statement that the information is accurate (under penalty of perjury)</li>
+                        <li>Your electronic or physical signature</li>
+                    </ul>
+                </li>
+                <li>We will respond within 48 hours</li>
+                <li>Confirmed infringing content will be removed</li>
+            </ol>
+
+            <h3>Counter-Notification</h3>
+            <p>If your content was removed due to a copyright claim and you believe it was a mistake:</p>
+            <ul>
+                <li>You may submit a counter-notification</li>
+                <li>Include your contact info and consent to jurisdiction</li>
+                <li>We will forward it to the original complainant</li>
+                <li>If no legal action is taken within 10 days, we may restore the content</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">👥</span> People in Your Photos</h2>
+            
+            <h3>Consent Requirements</h3>
+            <p>When uploading photos that include other people:</p>
+            <ul>
+                <li>You should have their consent to share the photo</li>
+                <li>Be mindful of their privacy preferences</li>
+                <li>Don't tag or identify people without permission</li>
+                <li>Be especially careful with photos of minors</li>
+            </ul>
+
+            <h3>If Someone Wants Their Photo Removed</h3>
+            <p>If a person in a photo wants it removed:</p>
+            <ul>
+                <li>They can contact us at <a href="mailto:privacy@fashionton.app" style="color: var(--primary-pink);">privacy@fashionton.app</a></li>
+                <li>We will review the request</li>
+                <li>If valid, we'll work with the uploader to remove or modify the content</li>
+                <li>We respect individuals' privacy rights</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">📝</span> Changes to This Agreement</h2>
+            <p>We may update this Content License Agreement from time to time. Changes will be:</p>
+            <ul>
+                <li>Posted on this page with an updated date</li>
+                <li>Announced in the app</li>
+                <li>Notified via Telegram (if you've enabled notifications)</li>
+            </ul>
+            <p>Continued use of the upload feature after changes constitutes acceptance of the updated Agreement.</p>
+        </section>
+
+        <div class="contact-box">
+            <h3>📧 Questions About Content?</h3>
+            <p>We're here to help with any content-related questions!</p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:content@fashionton.app">content@fashionton.app</a>
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
+                Copyright issues: <a href="mailto:copyright@fashionton.app">copyright@fashionton.app</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 FashionTON Wardrobe. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Your photos, your style, your control 👗✨</p>
+    </footer>
+</body>
+</html>

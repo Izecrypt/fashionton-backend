@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - FashionTON Wardrobe</title>
+    <style>
+        :root {
+            --primary-pink: #FF6B9D;
+            --primary-blue: #4ECDC4;
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text-light: #f8f9fa;
+            --text-muted: #a0a0a0;
+            --border-color: #2d3561;
+            --gradient-start: #FF6B9D;
+            --gradient-end: #4ECDC4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '👗';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            right: -1rem;
+            top: -1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .last-updated {
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--primary-pink);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(78,205,196,0.1));
+            border-left: 4px solid var(--primary-pink);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background: rgba(255,107,157,0.1);
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-required {
+            background: rgba(255,107,157,0.2);
+            color: var(--primary-pink);
+        }
+
+        .badge-optional {
+            background: rgba(78,205,196,0.2);
+            color: var(--primary-blue);
+        }
+
+        .badge-technical {
+            background: rgba(255,193,7,0.2);
+            color: #ffc107;
+        }
+
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .right-card {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .right-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .no-collect {
+            background: rgba(220,53,69,0.1);
+            border: 1px solid rgba(220,53,69,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .no-collect h4 {
+            color: #dc3545;
+            margin-bottom: 0.75rem;
+        }
+
+        .no-collect ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .no-collect li::before {
+            content: '❌ ';
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+
+            .data-table {
+                font-size: 0.85rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>👗 Privacy Policy</h1>
+        <p>FashionTON Wardrobe - Your Style, Your Privacy</p>
+    </header>
+
+    <div class="last-updated">
+        📅 Last Updated: February 4, 2026 | Effective Date: February 4, 2026
+    </div>
+
+    <div class="container">
+        <section>
+            <h2><span class="icon">👋</span> Introduction</h2>
+            <p>Welcome to FashionTON Wardrobe! We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, store, and protect your information when you use our Telegram Mini App.</p>
+            <p>We believe in <strong>privacy by design</strong> — we collect only the minimum data necessary to provide our service, and we never sell your personal information to anyone.</p>
+            
+            <div class="highlight-box">
+                <strong>🎯 Quick Summary:</strong> We only collect your Telegram ID, username, and photos you choose to upload. We don't collect emails, phone numbers, addresses, or financial information. You own your data and can delete it anytime.
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">📊</span> Data We Collect</h2>
+            
+            <h3>Required Information</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Purpose</th>
+                        <th>Legal Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Telegram User ID</td>
+                        <td>Authentication & account</td>
+                        <td><span class="badge badge-required">Contract</span></td>
+                    </tr>
+                    <tr>
+                        <td>Telegram Username</td>
+                        <td>Display in app</td>
+                        <td><span class="badge badge-required">Legitimate Interest</span></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td>Personalization</td>
+                        <td><span class="badge badge-required">Consent</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Optional Information (You Choose)</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Purpose</th>
+                        <th>Legal Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wardrobe Photos</td>
+                        <td>Core wardrobe feature</td>
+                        <td><span class="badge badge-optional">Consent</span></td>
+                    </tr>
+                    <tr>
+                        <td>Challenge Photos</td>
+                        <td>Social challenges</td>
+                        <td><span class="badge badge-optional">Consent</span></td>
+                    </tr>
+                    <tr>
+                        <td>Body Measurements</td>
+                        <td>Size calculator</td>
+                        <td><span class="badge badge-optional">Consent</span></td>
+                    </tr>
+                    <tr>
+                        <td>Style Preferences</td>
+                        <td>AI recommendations</td>
+                        <td><span class="badge badge-optional">Consent</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Technical Information</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Purpose</th>
+                        <th>Retention</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>IP Address</td>
+                        <td>Security & fraud prevention</td>
+                        <td><span class="badge badge-technical">30 days</span></td>
+                    </tr>
+                    <tr>
+                        <td>Device Info</td>
+                        <td>App optimization</td>
+                        <td><span class="badge badge-technical">90 days</span></td>
+                    </tr>
+                    <tr>
+                        <td>Usage Analytics</td>
+                        <td>Service improvement</td>
+                        <td><span class="badge badge-technical">Anonymized after 1 year</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="no-collect">
+                <h4>❌ Data We NEVER Collect</h4>
+                <ul>
+                    <li>Real names (beyond Telegram first name)</li>
+                    <li>Email addresses</li>
+                    <li>Phone numbers</li>
+                    <li>Physical addresses</li>
+                    <li>Precise geolocation</li>
+                    <li>Financial information (TON handled externally)</li>
+                    <li>Contact lists</li>
+                    <li>Browsing history</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">🎯</span> How We Use Your Data</h2>
+            <ol>
+                <li><strong>Provide the Service:</strong> Display your wardrobe, manage your outfits, and run challenges</li>
+                <li><strong>Personalization:</strong> Show your name and customize your experience</li>
+                <li><strong>Security:</strong> Protect against fraud and unauthorized access</li>
+                <li><strong>Improvement:</strong> Analyze app performance and fix bugs</li>
+                <li><strong>Communication:</strong> Send important service updates (not marketing)</li>
+            </ol>
+            
+            <div class="highlight-box">
+                <strong>🔒 Your Photos:</strong> Your wardrobe photos are private by default. Only you can see them unless you choose to share them in challenges or public outfits. We never use your photos for advertising without your explicit permission.
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">⚖️</span> Legal Basis (GDPR)</h2>
+            <p>Under GDPR, we process your data based on the following legal grounds:</p>
+            <ul>
+                <li><strong>Contract:</strong> Processing necessary to provide our service (authentication)</li>
+                <li><strong>Consent:</strong> Optional features like photos and measurements</li>
+                <li><strong>Legitimate Interest:</strong> Security and service improvement</li>
+                <li><strong>Legal Obligation:</strong> Compliance with laws and regulations</li>
+            </ul>
+            <p>You can withdraw consent for optional features at any time in your account settings.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">🤝</span> Data Sharing</h2>
+            <p>We don't sell your data. Period. We only share data with:</p>
+            <ul>
+                <li><strong>Telegram:</strong> For authentication (they already have this data)</li>
+                <li><strong>Vercel:</strong> Our hosting provider (data stored in EU)</li>
+                <li><strong>Cloudinary:</strong> For image storage and optimization</li>
+                <li><strong>TON Network:</strong> For cryptocurrency payments (wallet addresses only)</li>
+                <li><strong>Legal Authorities:</strong> Only when required by law</li>
+            </ul>
+            <p>All third-party providers are GDPR-compliant and bound by data processing agreements.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">✅</span> Your Rights (GDPR)</h2>
+            <div class="rights-grid">
+                <div class="right-card">
+                    <h4>👁️ Right to Access</h4>
+                    <p>Download all your data in a machine-readable format. Available in Settings → Export Data.</p>
+                </div>
+                <div class="right-card">
+                    <h4>🗑️ Right to Erasure</h4>
+                    <p>Delete your account and all personal data. Available in Settings → Delete Account.</p>
+                </div>
+                <div class="right-card">
+                    <h4>✏️ Right to Rectification</h4>
+                    <p>Edit your profile, measurements, and wardrobe items anytime.</p>
+                </div>
+                <div class="right-card">
+                    <h4>📦 Right to Portability</h4>
+                    <p>Export your wardrobe photos and data to transfer elsewhere.</p>
+                </div>
+                <div class="right-card">
+                    <h4>🛑 Right to Object</h4>
+                    <p>Opt-out of analytics and marketing communications.</p>
+                </div>
+                <div class="right-card">
+                    <h4>⏸️ Right to Restrict</h4>
+                    <p>Limit how we process your data while keeping your account.</p>
+                </div>
+            </div>
+            <p>To exercise any of these rights, contact us at <a href="mailto:privacy@fashionton.app" style="color: var(--primary-pink);">privacy@fashionton.app</a> or use the in-app controls.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">🔐</span> Data Security</h2>
+            <p>We implement industry-standard security measures:</p>
+            <ul>
+                <li>🔒 <strong>Encryption:</strong> All data encrypted in transit (TLS 1.3) and at rest (AES-256)</li>
+                <li>🛡️ <strong>Authentication:</strong> Secure Telegram OAuth integration</li>
+                <li>🔍 <strong>Monitoring:</strong> 24/7 security monitoring and automated threat detection</li>
+                <li>📋 <strong>Audits:</strong> Regular security audits and penetration testing</li>
+                <li>👥 <strong>Access Control:</strong> Strict internal access controls and staff training</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <strong>🚨 Data Breaches:</strong> In the unlikely event of a data breach, we will notify affected users and relevant authorities within 72 hours as required by GDPR.
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">🌍</span> International Data Transfers</h2>
+            <p>Your data is primarily stored in the European Union (Vercel's EU infrastructure). If data is transferred outside the EU (e.g., to US-based services), we ensure adequate protection through:</p>
+            <ul>
+                <li>EU Standard Contractual Clauses (SCCs)</li>
+                <li>Data Processing Agreements</li>
+                <li>Adequacy decisions where applicable</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">📅</span> Data Retention</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Profile & Wardrobe</td>
+                        <td>Until account deletion</td>
+                        <td>Service provision</td>
+                    </tr>
+                    <tr>
+                        <td>Challenge Entries</td>
+                        <td>90 days after challenge ends</td>
+                        <td>Fair competition</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Records</td>
+                        <td>7 years</td>
+                        <td>Legal requirement</td>
+                    </tr>
+                    <tr>
+                        <td>Security Logs</td>
+                        <td>30 days</td>
+                        <td>Fraud prevention</td>
+                    </tr>
+                    <tr>
+                        <td>Inactive Accounts</td>
+                        <td>Deleted after 3 years</td>
+                        <td>Data minimization</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2><span class="icon">🍪</span> Cookies & Storage</h2>
+            <p>We use minimal local storage:</p>
+            <ul>
+                <li><strong>Essential:</strong> Session tokens and app state (required)</li>
+                <li><strong>Preferences:</strong> Your settings and choices</li>
+                <li><strong>Analytics:</strong> Anonymous usage statistics (optional, opt-in)</li>
+            </ul>
+            <p>As a Telegram Mini App, we don't use traditional browser cookies. We use localStorage for essential app functionality only.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">👶</span> Children's Privacy</h2>
+            <p>FashionTON Wardrobe is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately at <a href="mailto:privacy@fashionton.app" style="color: var(--primary-pink);">privacy@fashionton.app</a> and we will delete the information promptly.</p>
+            <p>Users between 13-16 years old should have parental consent to use the app.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📝</span> Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes through:</p>
+            <ul>
+                <li>In-app notifications</li>
+                <li>Telegram messages (if you've enabled them)</li>
+                <li>Updated "Last Updated" date at the top of this page</li>
+            </ul>
+            <p>Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+        </section>
+
+        <div class="contact-box">
+            <h3>📧 Contact Us</h3>
+            <p>Questions about your privacy? We're here to help!</p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:privacy@fashionton.app">privacy@fashionton.app</a>
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
+                Data Protection Officer<br>
+                FashionTON Wardrobe Team
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 FashionTON Wardrobe. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">🔒 Secured with industry-standard encryption</p>
+    </footer>
+</body>
+</html>

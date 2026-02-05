@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="telegram-web-app" content="yes">
+    <title>FashionTON Wardrobe</title>
+    
+    <!-- Telegram WebApp JS -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- TON Connect UI -->
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --color-fashion-pink: #FF6B9D;
+            --color-fashion-pink-light: #FF8FB3;
+            --color-ton-blue: #0088CC;
+            --color-gold: #FFD700;
+            --color-black: #1A1A1A;
+            --color-white: #FAFAFA;
+            --color-gray: #8E8E93;
+            --color-gray-light: #C7C7CC;
+            --color-danger: #FF3B30;
+            --color-success: #34C759;
+            --color-warning: #FF9500;
+            
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --radius-xs: 8px;
+            
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.12);
+            --shadow-hard: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #FFF5F7 0%, #F0F8FF 100%);
+            min-height: 100vh;
+            color: var(--color-black);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Dark Theme */
+        body.theme-dark {
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            color: var(--color-white);
+        }
+        
+        body.theme-dark .glass {
+            background: rgba(30, 30, 50, 0.9);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+        }
+        
+        /* Glassmorphism Base */
+        .glass {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 107, 157, 0.15);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        /* Header */
+        .header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--color-fashion-pink), var(--color-fashion-pink-light));
+            color: white;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+        }
+        
+        .user-level {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        .main {
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+        
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            border-radius: 100px;
+            border: none;
+            background: rgba(255, 255, 255, 0.6);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            color: var(--color-black);
+        }
+        
+        body.theme-dark .tab {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+        }
+        
+        .tab.active {
+            background: var(--color-fashion-pink);
+            color: white;
+        }
+        
+        /* Screen Content */
+        .screen {
+            display: none;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+        
+        /* Wardrobe Grid */
+        .wardrobe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        @media (max-width: 375px) {
+            .wardrobe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .wardrobe-item {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .wardrobe-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .wardrobe-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+        
+        .wardrobe-item img.loading {
+            opacity: 0.3;
+        }
+        
+        .wardrobe-item img.loaded {
+            opacity: 1;
+        }
+        
+        .wardrobe-item.optimistic {
+            opacity: 0.7;
+        }
+        
+        .wardrobe-item .category-badge {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 100px;
+            font-size: 10px;
+            backdrop-filter: blur(4px);
+        }
+        
+        .wardrobe-item .favorite-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: var(--color-fashion-pink);
+            font-size: 16px;
+        }
+        
+        .wardrobe-item .item-actions {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: none;
+            gap: 4px;
+        }
+        
+        .wardrobe-item:hover .item-actions {
+            display: flex;
+        }
+        
+        .item-action-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Add Button */
+        .add-btn {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            border: 2px dashed var(--color-fashion-pink);
+            background: rgba(255, 107, 157, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .add-btn:hover {
+            background: rgba(255, 107, 157, 0.1);
+        }
+        
+        .add-btn span {
+            font-size: 32px;
+            color: var(--color-fashion-pink);
+        }
+        
+        .add-btn p {
+            font-size: 12px;
+            color: var(--color-gray);
+            margin-top: 4px;
+        }
+        
+        /* Challenge Card */
+        .challenge-card {
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .challenge-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .challenge-title {
+            font-family: var(--font-display);
+            font-size: 20px;
+        }
+        
+        .prize-pool {
+            background: linear-gradient(135deg, var(--color-ton-blue), #00AAFF);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .challenge-timer {
+            color: var(--color-gray);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .challenge-timer.ended {
+            color: var(--color-success);
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--color-fashion-pink), var(--color-fashion-pink-light));
+            color: white;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            padding: 14px 20px;
+            border: 1px solid var(--color-gray-light);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--color-black);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        body.theme-dark .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-danger {
+            background: var(--color-danger);
+            color: white;
+        }
+        
+        .btn-text {
+            background: none;
+            border: none;
+            padding: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* TON Wallet Button */
+        #wallet-container {
+            position: fixed;
+            bottom: 80px;
+            right: 16px;
+            z-index: 100;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0 24px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            z-index: 1000;
+        }
+        
+        body.theme-dark .bottom-nav {
+            background: rgba(30, 30, 50, 0.95);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--color-gray);
+            font-size: 12px;
+            transition: color 0.2s;
+            font-family: var(--font-body);
+        }
+        
+        .nav-item.active {
+            color: var(--color-fashion-pink);
+        }
+        
+        .nav-item span {
+            font-size: 24px;
+        }
+        
+        /* Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-md);
+        }
+        
+        body.theme-dark .skeleton {
+            background: linear-gradient(90deg, #2a2a3a 25%, #3a3a4a 50%, #2a2a3a 75%);
+            background-size: 200% 100%;
+        }
+        
+        .skeleton-card {
+            height: 120px;
+        }
+        
+        .skeleton-grid-item {
+            aspect-ratio: 1;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Animations */
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-pop {
+            animation: pop 0.3s ease;
+        }
+        
+        /* Toast Notifications */
+        #toast-container {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+        
+        .toast {
+            background: rgba(30, 30, 30, 0.95);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-hard);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            min-width: 200px;
+            justify-content: center;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .toast.hide {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        
+        .toast-success {
+            background: var(--color-success);
+        }
+        
+        .toast-error {
+            background: var(--color-danger);
+        }
+        
+        .toast-warning {
+            background: var(--color-warning);
+        }
+        
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        
+        .modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px;
+            z-index: 1;
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--color-gray);
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--color-gray-light);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 14px;
+            background: white;
+            transition: border-color 0.2s;
+        }
+        
+        body.theme-dark .form-input,
+        body.theme-dark .form-select,
+        body.theme-dark .form-textarea {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-fashion-pink);
+        }
+        
+        .form-textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        .form-actions button {
+            flex: 1;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        /* Error Messages */
+        .error-message {
+            background: rgba(255, 59, 48, 0.1);
+            color: var(--color-danger);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .error-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--color-danger);
+        }
+        
+        /* Hidden utility */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* App Loading State */
+        .app-loading {
+            pointer-events: none;
+        }
+        
+        /* Pull to Refresh */
+        .pull-to-refresh-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 10px;
+            background: linear-gradient(135deg, var(--color-fashion-pink), var(--color-fashion-pink-light));
+            color: white;
+            overflow: hidden;
+            transition: height 0.2s ease;
+            z-index: 999;
+        }
+        
+        .ptr-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            👗 FashionTON
+        </div>
+        <div class="user-info">
+            <span class="user-level" id="userLevel" style="display: none;"></span>
+            <img src="" alt="User" class="user-avatar" id="userAvatar" style="display: none;">
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab active" data-screen="wardrobe">Wardrobe</button>
+            <button class="tab" data-screen="outfits">Outfits</button>
+            <button class="tab" data-screen="challenges">Challenges</button>
+            <button class="tab" data-screen="store">Store</button>
+        </div>
+        
+        <!-- Wardrobe Screen -->
+        <div class="screen active" id="wardrobe-screen">
+            <div class="glass" style="padding: 16px; margin-bottom: 16px;">
+                <p id="wardrobeStats" style="color: var(--color-gray); font-size: 14px;">
+                    👕 <strong>0 items</strong> • Add your first item!
+                </p>
+            </div>
+            
+            <div class="wardrobe-grid" id="wardrobeGrid">
+                <div class="add-btn" id="addItemBtn">
+                    <span>+</span>
+                    <p>Add Item</p>
+                </div>
+                <!-- Items will be loaded here -->
+            </div>
+            
+            <!-- Infinite scroll sentinel -->
+            <div id="wardrobe-sentinel" style="height: 20px;"></div>
+        </div>
+        
+        <!-- Outfits Screen -->
+        <div class="screen" id="outfits-screen">
+            <div class="glass" style="padding: 16px; margin-bottom: 16px; text-align: center;">
+                <button class="btn-primary" id="createOutfitBtn" style="margin-bottom: 12px;">
+                    ✨ Create New Outfit
+                </button>
+                <p style="color: var(--color-gray); font-size: 14px;">
+                    Mix & match your wardrobe items
+                </p>
+            </div>
+            
+            <div id="outfitsContainer">
+                <!-- Outfits will be loaded here -->
+                <div class="empty-state" style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">✨</div>
+                    <h3 style="font-family: var(--font-display); margin-bottom: 8px;">No outfits yet</h3>
+                    <p style="color: var(--color-gray);">Create your first outfit!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Challenges Screen -->
+        <div class="screen" id="challenges-screen">
+            <div id="currentChallenge">
+                <!-- Current challenge will be loaded here -->
+                <div class="challenge-card glass" style="text-align: center; padding: 40px;">
+                    <div class="skeleton skeleton-card" style="height: 100px; margin-bottom: 16px;"></div>
+                    <div class="skeleton" style="height: 20px; width: 60%; margin: 0 auto;"></div>
+                </div>
+            </div>
+            
+            <!-- Challenge Tabs -->
+            <div class="tabs" style="margin-top: 24px;">
+                <button class="tab challenge-tab active" data-view="entries">Entries</button>
+                <button class="tab challenge-tab" data-view="leaderboard">Leaderboard</button>
+            </div>
+            
+            <div id="entriesGrid" class="wardrobe-grid" style="margin-top: 16px;">
+                <!-- Entries will be loaded here -->
+            </div>
+            
+            <div id="leaderboardView" class="hidden">
+                <!-- Leaderboard will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Store Screen -->
+        <div class="screen" id="store-screen">
+            <div class="glass" style="padding: 24px; text-align: center;">
+                <p style="font-size: 48px; margin-bottom: 16px;">💎</p>
+                <h3 style="font-family: var(--font-display); margin-bottom: 8px;">
+                    Go Premium
+                </h3>
+                <p style="color: var(--color-gray); margin-bottom: 24px;">
+                    Unlock unlimited wardrobe, AR try-on, and AI stylist
+                </p>
+                
+                <div style="text-align: left; margin-bottom: 24px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <span style="color: var(--color-fashion-pink);">✓</span>
+                        <span>Unlimited wardrobe items</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <span style="color: var(--color-fashion-pink);">✓</span>
+                        <span>AR Try-On feature</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <span style="color: var(--color-fashion-pink);">✓</span>
+                        <span>AI Personal Stylist</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <span style="color: var(--color-fashion-pink);">✓</span>
+                        <span>Bigger challenge rewards</span>
+                    </div>
+                </div>
+                
+                <div style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">
+                    10 TON <span style="font-size: 14px; font-weight: 400; color: var(--color-gray);">/ month</span>
+                </div>
+                
+                <button class="btn-primary" id="subscribeBtn">
+                    💎 Subscribe with TON
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- TON Wallet Container -->
+    <div id="wallet-container"></div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-screen="wardrobe">
+            <span>👗</span>
+            Wardrobe
+        </button>
+        <button class="nav-item" data-screen="outfits">
+            <span>✨</span>
+            Outfits
+        </button>
+        <button class="nav-item" data-screen="challenges">
+            <span>🏆</span>
+            Challenges
+        </button>
+        <button class="nav-item" data-screen="store">
+            <span>💎</span>
+            Store
+        </button>
+    </nav>
+    
+    <!-- Scripts - Order matters for dependencies -->
+    <script src="js/error-handler.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="js/ui-helpers.js"></script>
+    <script src="js/store.js"></script>
+    <script src="screens/wardrobe.js"></script>
+    <script src="screens/outfits.js"></script>
+    <script src="screens/challenges.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
