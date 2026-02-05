@@ -3,12 +3,17 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
+
+console.log('Starting server...');
+console.log('PORT:', PORT);
+console.log('HOST:', HOST);
 
 // CORS
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// Health check - MUST respond for Railway health checks
+// Health check
 app.get('/', (req, res) => {
   console.log('Health check received');
   res.json({ success: true, message: 'FashionTON API' });
@@ -49,10 +54,9 @@ app.get('/api/wardrobe', (req, res) => {
   res.json({ success: true, data: [] });
 });
 
-// Start server
-const server = app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+// Start server with explicit host binding
+const server = app.listen(PORT, HOST, () => {
+  console.log(`Server running on http://${HOST}:${PORT}`);
 });
 
 // Handle graceful shutdown
